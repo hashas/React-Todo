@@ -36,9 +36,19 @@ class App extends React.Component {
     console.log(this.state)
   }
 
-  // clickHandler = event => {
-  // 
-  // }
+  clickHandler = id => {
+  //  this.state.todoList = this.state.todoList.map( todo => {
+    const todos = this.state.todoList.map( todo => {
+     if (todo.id === id) {
+       todo.completed = !todo.completed
+       return todo
+     } else {
+       return todo
+     }
+    })
+    console.log(todos)
+    this.setState({todos})
+  }
 
   constructor() {
     super();
@@ -64,7 +74,10 @@ class App extends React.Component {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoList data={this.state.todoList}/>
+        <TodoList 
+          data={this.state.todoList}
+          clickHandler={this.clickHandler}
+        />
         <TodoForm
         value={this.state.formData.task}
         changeHandler={this.changeHandler}

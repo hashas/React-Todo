@@ -10,7 +10,12 @@ const TodoList = props => {
         <div>
             {props.data.map( todo => {
                 return(
-                    <Todo task={todo.task}/>
+                    <Todo 
+                        task={todo.task}
+                        status={todo.completed}
+                        id={todo.id}
+                        clickHandler={props.clickHandler}
+                    />
                 )
             })}
         </div>
