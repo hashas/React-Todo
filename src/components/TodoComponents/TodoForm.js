@@ -10,8 +10,8 @@ const TodoForm = props => {
                     onChange={event => {props.changeHandler(event)}} 
                     placeholder="Enter task..."
                 />
-                <button >Add Todo</button>
-                <button>Clear Completed</button>
+                <button onClick={props.submitHandler}>Add Todo</button>
+                <button onClick={props.handleClearComplete}>Clear Completed</button>
             </form>
         </div>
     )

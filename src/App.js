@@ -38,7 +38,7 @@ class App extends React.Component {
 
   clickHandler = id => {
   //  this.state.todoList = this.state.todoList.map( todo => {
-    const todos = this.state.todoList.map( todo => {
+    const todoList = this.state.todoList.map( todo => {
      if (todo.id === id) {
        todo.completed = !todo.completed
        return todo
@@ -46,9 +46,24 @@ class App extends React.Component {
        return todo
      }
     })
-    console.log(todos)
-    this.setState({todos})
+    console.log(todoList)
+    this.setState({todoList})
   }
+
+handleClearComplete = event => {
+    // const todos = this.state.todoList.filter( todo => {
+    //   if (todo.completed === true) {
+    //     return null
+    //   } else {
+    //     return todo
+    //   }
+    // })
+    event.preventDefault()
+    const todoList = this.state.todoList.filter( todo => !todo.completed )
+    console.log(todoList)
+    this.setState({todoList})
+    console.log(this.state)
+}
 
   constructor() {
     super();
@@ -82,6 +97,7 @@ class App extends React.Component {
         value={this.state.formData.task}
         changeHandler={this.changeHandler}
         submitHandler={this.submitHandler}
+        handleClearComplete={this.handleClearComplete}
         /> 
       </div>
     );
